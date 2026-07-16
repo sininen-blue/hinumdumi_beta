@@ -1,8 +1,43 @@
 [gd_scene format=3 uid="uid://bc4lo12csp4nu"]
 
+[ext_resource type="Script" uid="uid://byjw0efdks06a" path="res://src/statemachine/statemachine.gd" id="1_khfle"]
+[ext_resource type="Script" uid="uid://c5o777xligwqo" path="res://src/statemachine/state.gd" id="2_fn53c"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vehwe"]
 
 [node name="Player" type="CharacterBody3D" unique_id=757263129]
 
+[node name="Head" type="Node3D" parent="." unique_id=751744635]
+
+[node name="Inventory" type="Node" parent="." unique_id=251186887]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=76378326]
 shape = SubResource("CapsuleShape3D_vehwe")
+
+[node name="StateMachine" type="Node" parent="." unique_id=63083385]
+script = ExtResource("1_khfle")
+metadata/_custom_type_script = "uid://byjw0efdks06a"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1627703216]
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="CrouchState" type="Node" parent="StateMachine" unique_id=215345901]
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=1362567190]
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="RunState" type="Node" parent="StateMachine" unique_id=1815662163]
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="JumpState" type="Node" parent="StateMachine" unique_id=1392428377]
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="HideState" type="Node" parent="StateMachine" unique_id=196102211]
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
