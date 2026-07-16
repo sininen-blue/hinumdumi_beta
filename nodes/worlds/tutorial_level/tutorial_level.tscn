@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bbjo28b2ad8xe"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_vehwe"]
+
+[node name="TutorialLevel" type="NavigationRegion3D" unique_id=1132254519]
+navigation_mesh = SubResource("NavigationMesh_vehwe")
