@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d05ge4magxqmx"]
+
+[ext_resource type="Script" uid="uid://ce245nftvhmpi" path="res://src/components/can_control_camera/can_control_camera.gd" id="1_ksugk"]
+
+[node name="CanControlCamera" type="Node" unique_id=1395999547]
+script = ExtResource("1_ksugk")
