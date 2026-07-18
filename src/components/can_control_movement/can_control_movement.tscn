@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bgww8cg8isguk"]
+
+[ext_resource type="Script" uid="uid://cbujk7nrs1oir" path="res://src/components/can_control_movement/can_control_movement.gd" id="1_jv1ah"]
+
+[node name="CanControlMovement" type="Node" unique_id=1886297823]
+script = ExtResource("1_jv1ah")
+metadata/_custom_type_script = "uid://cc2dmmgakmdl4"

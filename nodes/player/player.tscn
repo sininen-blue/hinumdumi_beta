@@ -4,21 +4,26 @@
 [ext_resource type="Script" uid="uid://byjw0efdks06a" path="res://src/statemachine/statemachine.gd" id="1_khfle"]
 [ext_resource type="Script" uid="uid://dohwr1d5tidn7" path="res://nodes/player/head.gd" id="2_4j62c"]
 [ext_resource type="Script" uid="uid://c5o777xligwqo" path="res://src/statemachine/state.gd" id="2_fn53c"]
+[ext_resource type="Script" uid="uid://wysurqavpf28" path="res://nodes/player/inventory.gd" id="3_1fmtd"]
 [ext_resource type="PackedScene" uid="uid://d05ge4magxqmx" path="res://src/components/can_control_camera/can_control_camera.tscn" id="4_osu55"]
+[ext_resource type="PackedScene" uid="uid://bgww8cg8isguk" path="res://src/components/can_control_movement/can_control_movement.tscn" id="5_hs1md"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vehwe"]
 
 [node name="Player" type="CharacterBody3D" unique_id=757263129]
 script = ExtResource("1_fn53c")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=76378326]
+shape = SubResource("CapsuleShape3D_vehwe")
+
+[node name="Inventory" type="Node3D" parent="." unique_id=844254989]
+script = ExtResource("3_1fmtd")
+
 [node name="Head" type="Node3D" parent="." unique_id=751744635]
 unique_name_in_owner = true
 script = ExtResource("2_4j62c")
 
-[node name="Inventory" type="Node" parent="." unique_id=251186887]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=76378326]
-shape = SubResource("CapsuleShape3D_vehwe")
+[node name="InteractionCast" type="RayCast3D" parent="Head" unique_id=810384018]
 
 [node name="StateMachine" type="Node" parent="." unique_id=63083385]
 script = ExtResource("1_khfle")
@@ -36,11 +41,25 @@ metadata/_custom_type_script = "uid://c5o777xligwqo"
 script = ExtResource("2_fn53c")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
+[node name="CanControlMovement" parent="StateMachine/SpookState" unique_id=1886297823 instance=ExtResource("5_hs1md")]
+
+[node name="TripState" type="Node" parent="StateMachine" unique_id=259803699]
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=1627703216]
 script = ExtResource("2_fn53c")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
-[node name="CanControlCamera" parent="StateMachine/IdleState" unique_id=1395999547 node_paths=PackedStringArray("body", "head") instance=ExtResource("4_osu55")]
+[node name="CanControlCamera" parent="StateMachine/IdleState" unique_id=884058187 node_paths=PackedStringArray("body", "head") instance=ExtResource("4_osu55")]
+body = NodePath("../../..")
+head = NodePath("../../../Head")
+
+[node name="IdleCrouchState" type="Node" parent="StateMachine" unique_id=1975610082]
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="CanControlCamera" parent="StateMachine/IdleCrouchState" unique_id=1395999547 node_paths=PackedStringArray("body", "head") instance=ExtResource("4_osu55")]
 body = NodePath("../../..")
 head = NodePath("../../../Head")
 
@@ -48,18 +67,36 @@ head = NodePath("../../../Head")
 script = ExtResource("2_fn53c")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
+[node name="CanControlMovement" parent="StateMachine/CrouchState" unique_id=2069702876 instance=ExtResource("5_hs1md")]
+
+[node name="CanControlCamera" parent="StateMachine/CrouchState" unique_id=1436686018 instance=ExtResource("4_osu55")]
+
 [node name="WalkState" type="Node" parent="StateMachine" unique_id=1362567190]
 script = ExtResource("2_fn53c")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="CanControlMovement" parent="StateMachine/WalkState" unique_id=377521678 instance=ExtResource("5_hs1md")]
+
+[node name="CanControlCamera" parent="StateMachine/WalkState" unique_id=314421022 instance=ExtResource("4_osu55")]
 
 [node name="RunState" type="Node" parent="StateMachine" unique_id=1815662163]
 script = ExtResource("2_fn53c")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
+[node name="CanControlMovement" parent="StateMachine/RunState" unique_id=1344263664 instance=ExtResource("5_hs1md")]
+
+[node name="CanControlCamera" parent="StateMachine/RunState" unique_id=281208561 instance=ExtResource("4_osu55")]
+
 [node name="JumpState" type="Node" parent="StateMachine" unique_id=1392428377]
 script = ExtResource("2_fn53c")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
+[node name="CanControlMovement" parent="StateMachine/JumpState" unique_id=1037930077 instance=ExtResource("5_hs1md")]
+
+[node name="CanControlCamera" parent="StateMachine/JumpState" unique_id=691794738 instance=ExtResource("4_osu55")]
+
 [node name="HideState" type="Node" parent="StateMachine" unique_id=196102211]
 script = ExtResource("2_fn53c")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="CanControlCamera" parent="StateMachine/HideState" unique_id=1888350503 instance=ExtResource("4_osu55")]
