@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ba601j07whkfg"]
+
+[ext_resource type="Script" uid="uid://dhfwywdns6ofm" path="res://src/components/can_follow_nav/can_follow_nav.gd" id="1_whqlp"]
+
+[node name="CanFollowNav" type="Node" unique_id=437968238]
+script = ExtResource("1_whqlp")
+metadata/_custom_type_script = "uid://cc2dmmgakmdl4"

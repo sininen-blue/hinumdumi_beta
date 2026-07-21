@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b2uqpkvduhwkr"]
 
+[ext_resource type="Script" uid="uid://d4lfq4ise5h8n" path="res://nodes/post_processing/post_processing.gd" id="1_uo215"]
+
 [node name="PostProcessing" type="CanvasLayer" unique_id=1487972306]
+script = ExtResource("1_uo215")
 
 [node name="Control" type="Control" parent="." unique_id=1471346776]
 layout_mode = 3

@@ -3,7 +3,9 @@ class_name Player
 
 signal stamina_changed(current_stamina: float)
 
-@export var stamina: float = 0
+@export var max_stamina: float = 15;
+@export var stamina: float = 0:
+	set = _set_stamina
 
 @export var mass: float = 5.0
 
@@ -12,6 +14,10 @@ var prev_dir: Vector3
 var direction: Vector3
 
 var is_on_ground: bool
+
+
+func _ready() -> void:
+	stamina = max_stamina
 
 
 func _process(delta: float) -> void:
@@ -38,3 +44,8 @@ func _input(event: InputEvent) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("mouse_left"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _set_stamina(new_val: float) -> void:
+	stamina = new_val
+	stamina_changed.emit(new_val)

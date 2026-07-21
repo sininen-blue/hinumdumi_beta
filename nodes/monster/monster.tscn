@@ -1,10 +1,58 @@
 [gd_scene format=3 uid="uid://c1v75blbalcon"]
 
+[ext_resource type="Script" uid="uid://ppkxj2eaq77j" path="res://nodes/monster/monster.gd" id="1_4mp1r"]
+[ext_resource type="Script" uid="uid://byjw0efdks06a" path="res://src/statemachine/statemachine.gd" id="1_abnl3"]
+[ext_resource type="Script" uid="uid://c5o777xligwqo" path="res://src/statemachine/state.gd" id="2_u5g3m"]
+[ext_resource type="PackedScene" uid="uid://ba601j07whkfg" path="res://src/components/can_follow_nav/can_follow_nav.tscn" id="3_u5g3m"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_coeo4"]
 
 [node name="Monster" type="CharacterBody3D" unique_id=904191598]
+script = ExtResource("1_4mp1r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=261034807]
 shape = SubResource("CapsuleShape3D_coeo4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1063636245]
+
+[node name="StateMachine" type="Node" parent="." unique_id=436516449]
+script = ExtResource("1_abnl3")
+metadata/_custom_type_script = "uid://byjw0efdks06a"
+
+[node name="SpookState" type="Node" parent="StateMachine" unique_id=1280213789]
+script = ExtResource("2_u5g3m")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=2040401679]
+script = ExtResource("2_u5g3m")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="ListenState" type="Node" parent="StateMachine" unique_id=603768425]
+script = ExtResource("2_u5g3m")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="WanderState" type="Node" parent="StateMachine" unique_id=675848084]
+script = ExtResource("2_u5g3m")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="CanFollowNav" parent="StateMachine/WanderState" unique_id=437968238 instance=ExtResource("3_u5g3m")]
+
+[node name="InvestigateState" type="Node" parent="StateMachine" unique_id=1136644849]
+script = ExtResource("2_u5g3m")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="CanFollowNav" parent="StateMachine/InvestigateState" unique_id=1965807301 instance=ExtResource("3_u5g3m")]
+
+[node name="HuntState" type="Node" parent="StateMachine" unique_id=1358044709]
+script = ExtResource("2_u5g3m")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="CanFollowNav" parent="StateMachine/HuntState" unique_id=371672778 instance=ExtResource("3_u5g3m")]
+
+[node name="LungeState" type="Node" parent="StateMachine" unique_id=1207417294]
+script = ExtResource("2_u5g3m")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="SwipeState" type="Node" parent="StateMachine" unique_id=611038649]
+script = ExtResource("2_u5g3m")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
