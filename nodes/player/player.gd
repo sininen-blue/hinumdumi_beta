@@ -15,6 +15,8 @@ var direction: Vector3
 
 var is_on_ground: bool
 
+@onready var head: Head = %Head
+
 
 func _ready() -> void:
 	stamina = max_stamina
