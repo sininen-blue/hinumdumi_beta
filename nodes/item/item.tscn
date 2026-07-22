@@ -2,11 +2,14 @@
 
 [ext_resource type="Script" uid="uid://d0btw3vs6gje" path="res://nodes/item/item.gd" id="1_h8s4t"]
 [ext_resource type="Script" uid="uid://byjw0efdks06a" path="res://src/statemachine/statemachine.gd" id="2_0drmn"]
+[ext_resource type="PackedScene" uid="uid://b2p686ts5t6qf" path="res://src/interactable/interact_area.tscn" id="2_8ec4q"]
 [ext_resource type="Script" uid="uid://c5o777xligwqo" path="res://src/statemachine/state.gd" id="3_8ec4q"]
+[ext_resource type="Script" uid="uid://bu3y2kacxip8a" path="res://nodes/item/shop_state.gd" id="4_kqsv2"]
+[ext_resource type="Script" uid="uid://cnrdyg4tff3fv" path="res://nodes/item/drop_state.gd" id="6_byc5h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_coeo4"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_vehwe"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_8ec4q"]
 
 [node name="Item" type="RigidBody3D" unique_id=218960187]
 script = ExtResource("1_h8s4t")
@@ -14,10 +17,10 @@ script = ExtResource("1_h8s4t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1975376625]
 shape = SubResource("SphereShape3D_coeo4")
 
-[node name="InteractArea" type="Area3D" parent="." unique_id=1265484317]
+[node name="InteractArea" parent="." unique_id=1854659640 instance=ExtResource("2_8ec4q")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=2118820865]
-shape = SubResource("SphereShape3D_vehwe")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1394807054]
+shape = SubResource("SphereShape3D_8ec4q")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1727496752 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_0drmn")
@@ -25,7 +28,8 @@ initial_state = NodePath("ShopState")
 metadata/_custom_type_script = "uid://byjw0efdks06a"
 
 [node name="ShopState" type="Node" parent="StateMachine" unique_id=747320409]
-script = ExtResource("3_8ec4q")
+unique_name_in_owner = true
+script = ExtResource("4_kqsv2")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
 [node name="ItemLabel" type="Label3D" parent="StateMachine/ShopState" unique_id=1641661919]
@@ -33,11 +37,16 @@ metadata/_custom_type_script = "uid://c5o777xligwqo"
 [node name="ItemPrice" type="Label3D" parent="StateMachine/ShopState" unique_id=1602798197]
 
 [node name="HeldState" type="Node" parent="StateMachine" unique_id=12624943]
+unique_name_in_owner = true
 script = ExtResource("3_8ec4q")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
 [node name="DropState" type="Node" parent="StateMachine" unique_id=1714975954]
-script = ExtResource("3_8ec4q")
+unique_name_in_owner = true
+script = ExtResource("6_byc5h")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
 [node name="DropSound" type="AudioStreamPlayer3D" parent="." unique_id=323235363]
+
+[connection signal="interacted" from="InteractArea" to="StateMachine/ShopState" method="_on_interact_area_interacted"]
+[connection signal="interacted" from="InteractArea" to="StateMachine/DropState" method="_on_interact_area_interacted"]

@@ -16,6 +16,8 @@ var direction: Vector3
 var is_on_ground: bool
 
 @onready var head: Head = %Head
+@onready var interaction_cast: RayCast3D = $Head/InteractionCast
+@onready var inventory: Inventory = $Inventory
 
 
 func _ready() -> void:
@@ -38,9 +40,11 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("interact"):
-		#pass
-		# interact()
+	if event.is_action_pressed("interact"):
+		if interaction_cast.is_colliding():
+			var collided: Object = interaction_cast.get_collider()
+			if collided is Interactable:
+				collided.interact(self)
 
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

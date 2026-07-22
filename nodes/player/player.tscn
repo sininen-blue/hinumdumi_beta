@@ -40,6 +40,9 @@ unique_name_in_owner = true
 script = ExtResource("2_4j62c")
 
 [node name="InteractionCast" type="RayCast3D" parent="Head" unique_id=810384018]
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="StateMachine" type="Node" parent="." unique_id=63083385 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_khfle")
