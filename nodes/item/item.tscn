@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://d0btw3vs6gje" path="res://nodes/item/item.gd" id="1_h8s4t"]
 [ext_resource type="Script" uid="uid://byjw0efdks06a" path="res://src/statemachine/statemachine.gd" id="2_0drmn"]
 [ext_resource type="PackedScene" uid="uid://b2p686ts5t6qf" path="res://src/interactable/interact_area.tscn" id="2_8ec4q"]
-[ext_resource type="Script" uid="uid://c5o777xligwqo" path="res://src/statemachine/state.gd" id="3_8ec4q"]
 [ext_resource type="Script" uid="uid://bu3y2kacxip8a" path="res://nodes/item/shop_state.gd" id="4_kqsv2"]
+[ext_resource type="Script" uid="uid://bkef702ueo257" path="res://nodes/item/held_state.gd" id="5_byc5h"]
 [ext_resource type="Script" uid="uid://cnrdyg4tff3fv" path="res://nodes/item/drop_state.gd" id="6_byc5h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_coeo4"]
@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://c5o777xligwqo"
 
 [node name="HeldState" type="Node" parent="StateMachine" unique_id=12624943]
 unique_name_in_owner = true
-script = ExtResource("3_8ec4q")
+script = ExtResource("5_byc5h")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
 [node name="DropState" type="Node" parent="StateMachine" unique_id=1714975954]
