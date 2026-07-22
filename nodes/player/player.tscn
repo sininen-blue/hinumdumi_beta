@@ -28,6 +28,8 @@ shape = SubResource("CapsuleShape3D_vehwe")
 
 [node name="Identifier" type="AudioStreamPlayer3D" parent="SoundManager" unique_id=1504099979]
 
+[node name="DropExclamation" type="AudioStreamPlayer3D" parent="SoundManager" unique_id=675487525]
+
 [node name="Inventory" type="Node3D" parent="." unique_id=844254989]
 script = ExtResource("3_1fmtd")
 
@@ -39,8 +41,9 @@ script = ExtResource("2_4j62c")
 
 [node name="InteractionCast" type="RayCast3D" parent="Head" unique_id=810384018]
 
-[node name="StateMachine" type="Node" parent="." unique_id=63083385]
+[node name="StateMachine" type="Node" parent="." unique_id=63083385 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_khfle")
+initial_state = NodePath("IdleState")
 metadata/_custom_type_script = "uid://byjw0efdks06a"
 
 [node name="CinematicState" type="Node" parent="StateMachine" unique_id=498392826]

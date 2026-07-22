@@ -1,15 +1,43 @@
 [gd_scene format=3 uid="uid://tfc5vvrhjbod"]
 
 [ext_resource type="Script" uid="uid://d0btw3vs6gje" path="res://nodes/item/item.gd" id="1_h8s4t"]
+[ext_resource type="Script" uid="uid://byjw0efdks06a" path="res://src/statemachine/statemachine.gd" id="2_0drmn"]
+[ext_resource type="Script" uid="uid://c5o777xligwqo" path="res://src/statemachine/state.gd" id="3_8ec4q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_coeo4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vehwe"]
 
-[node name="Item" type="Node3D" unique_id=1399464902]
+[node name="Item" type="RigidBody3D" unique_id=218960187]
 script = ExtResource("1_h8s4t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1975376625]
+shape = SubResource("SphereShape3D_coeo4")
 
 [node name="InteractArea" type="Area3D" parent="." unique_id=1265484317]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=2118820865]
 shape = SubResource("SphereShape3D_vehwe")
 
-[node name="ItemLabel" type="Label3D" parent="." unique_id=1641661919]
+[node name="StateMachine" type="Node" parent="." unique_id=1727496752 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_0drmn")
+initial_state = NodePath("ShopState")
+metadata/_custom_type_script = "uid://byjw0efdks06a"
+
+[node name="ShopState" type="Node" parent="StateMachine" unique_id=747320409]
+script = ExtResource("3_8ec4q")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="ItemLabel" type="Label3D" parent="StateMachine/ShopState" unique_id=1641661919]
+
+[node name="ItemPrice" type="Label3D" parent="StateMachine/ShopState" unique_id=1602798197]
+
+[node name="HeldState" type="Node" parent="StateMachine" unique_id=12624943]
+script = ExtResource("3_8ec4q")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="DropState" type="Node" parent="StateMachine" unique_id=1714975954]
+script = ExtResource("3_8ec4q")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[node name="DropSound" type="AudioStreamPlayer3D" parent="." unique_id=323235363]

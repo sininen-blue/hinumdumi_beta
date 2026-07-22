@@ -38,8 +38,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
-		pass
+	#if event.is_action_pressed("interact"):
+		#pass
 		# interact()
 
 	if event.is_action_pressed("ui_cancel"):
