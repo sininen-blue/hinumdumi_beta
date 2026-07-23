@@ -84,7 +84,9 @@ hide={
 
 [layer_names]
 
+3d_physics/layer_1="ground"
 3d_physics/layer_2="interactables"
+3d_physics/layer_3="player"
 
 [physics]
 

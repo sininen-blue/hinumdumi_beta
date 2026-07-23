@@ -8,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://d05ge4magxqmx" path="res://src/components/can_control_camera/can_control_camera.tscn" id="4_osu55"]
 [ext_resource type="PackedScene" uid="uid://bgww8cg8isguk" path="res://src/components/can_control_movement/can_control_movement.tscn" id="5_hs1md"]
 [ext_resource type="Script" uid="uid://blpxjywoduhcu" path="res://nodes/player/states/idle_state.gd" id="7_5h4ma"]
-[ext_resource type="Script" uid="uid://b3rfx3xflordh" path="res://nodes/player/idle_crouch_state.gd" id="9_1n2qe"]
-[ext_resource type="Script" uid="uid://bfcl8lq0s50v0" path="res://nodes/player/walk_state.gd" id="9_qwfek"]
-[ext_resource type="Script" uid="uid://d37r42olcxxkp" path="res://nodes/player/run_state.gd" id="9_xl06i"]
-[ext_resource type="Script" uid="uid://dgo8xct1jrp5d" path="res://nodes/player/crouch_state.gd" id="10_2xyxk"]
-[ext_resource type="Script" uid="uid://xck8rv0yn2cb" path="res://nodes/player/jump_state.gd" id="12_eiqky"]
-[ext_resource type="Script" uid="uid://ris7vtj3vcmk" path="res://nodes/player/hide_state.gd" id="13_j4qgx"]
+[ext_resource type="Script" uid="uid://b3rfx3xflordh" path="res://nodes/player/states/idle_crouch_state.gd" id="9_1n2qe"]
+[ext_resource type="Script" uid="uid://bfcl8lq0s50v0" path="res://nodes/player/states/walk_state.gd" id="9_qwfek"]
+[ext_resource type="Script" uid="uid://d37r42olcxxkp" path="res://nodes/player/states/run_state.gd" id="9_xl06i"]
+[ext_resource type="Script" uid="uid://dgo8xct1jrp5d" path="res://nodes/player/states/crouch_state.gd" id="10_2xyxk"]
+[ext_resource type="Script" uid="uid://xck8rv0yn2cb" path="res://nodes/player/states/jump_state.gd" id="12_eiqky"]
+[ext_resource type="Script" uid="uid://ris7vtj3vcmk" path="res://nodes/player/states/hide_state.gd" id="13_j4qgx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vehwe"]
 

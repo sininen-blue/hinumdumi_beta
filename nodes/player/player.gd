@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 signal stamina_changed(current_stamina: float)
+signal noise_made(noise_level: int)
 
 @export var max_stamina: float = 15;
 @export var stamina: float = 0:

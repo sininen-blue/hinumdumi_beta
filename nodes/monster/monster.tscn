@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://ppkxj2eaq77j" path="res://nodes/monster/monster.gd" id="1_4mp1r"]
 [ext_resource type="Script" uid="uid://byjw0efdks06a" path="res://src/statemachine/statemachine.gd" id="1_abnl3"]
+[ext_resource type="Script" uid="uid://r4wpcw3fvydq" path="res://nodes/monster/vision_cast.gd" id="2_mvsj8"]
 [ext_resource type="Script" uid="uid://c5o777xligwqo" path="res://src/statemachine/state.gd" id="2_u5g3m"]
+[ext_resource type="Script" uid="uid://dbnl087nqat5l" path="res://nodes/monster/hearing_cast.gd" id="3_5emnm"]
 [ext_resource type="PackedScene" uid="uid://ba601j07whkfg" path="res://src/components/can_follow_nav/can_follow_nav.tscn" id="3_u5g3m"]
-[ext_resource type="Script" uid="uid://c2hwpljsxppgg" path="res://nodes/monster/listen_state.gd" id="4_krfqf"]
-[ext_resource type="Script" uid="uid://dq4ujwwa70s2x" path="res://nodes/monster/wander_state.gd" id="5_ang6r"]
+[ext_resource type="Script" uid="uid://c2hwpljsxppgg" path="res://nodes/monster/states/listen_state.gd" id="4_krfqf"]
+[ext_resource type="Script" uid="uid://dq4ujwwa70s2x" path="res://nodes/monster/states/wander_state.gd" id="5_ang6r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_coeo4"]
 
@@ -18,6 +20,15 @@ shape = SubResource("CapsuleShape3D_coeo4")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1063636245]
 
 [node name="VisionCast" type="RayCast3D" parent="." unique_id=644456334]
+unique_name_in_owner = true
+target_position = Vector3(30, 0, 0)
+collision_mask = 5
+script = ExtResource("2_mvsj8")
+
+[node name="HearingCast" type="RayCast3D" parent="." unique_id=2073444485]
+unique_name_in_owner = true
+collision_mask = 4
+script = ExtResource("3_5emnm")
 
 [node name="StateMachine" type="Node" parent="." unique_id=436516449 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_abnl3")
