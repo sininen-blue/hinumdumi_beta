@@ -1,6 +1,7 @@
 extends State
 
 @export var player: Player
+@export var decel: float
 
 @onready var idle_crouch_state: State = %IdleCrouchState
 @onready var walk_state: State = %WalkState
@@ -24,8 +25,12 @@ func update(_delta: float) -> void:
 		state_machine.change_state(walk_state)
 
 
-func physics_update(delta: float) -> void:
-	pass
+func physics_update(_delta: float) -> void:
+	player.current_speed = move_toward(player.current_speed, 0, decel)
+	player.velocity.x = player.direction.x * player.current_speed
+	player.velocity.z = player.direction.z * player.current_speed
+
+	player.move_and_slide()
 
 
 func handle_input(event: InputEvent) -> void:

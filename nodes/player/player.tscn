@@ -80,6 +80,11 @@ unique_name_in_owner = true
 script = ExtResource("2_fn53c")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
+[node name="GetupState" type="Node" parent="StateMachine" unique_id=1882149578]
+unique_name_in_owner = true
+script = ExtResource("2_fn53c")
+metadata/_custom_type_script = "uid://c5o777xligwqo"
+
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=1627703216]
 unique_name_in_owner = true
 script = ExtResource("7_5h4ma")
