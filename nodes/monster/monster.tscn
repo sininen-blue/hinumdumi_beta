@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://byjw0efdks06a" path="res://src/statemachine/statemachine.gd" id="1_abnl3"]
 [ext_resource type="Script" uid="uid://c5o777xligwqo" path="res://src/statemachine/state.gd" id="2_u5g3m"]
 [ext_resource type="PackedScene" uid="uid://ba601j07whkfg" path="res://src/components/can_follow_nav/can_follow_nav.tscn" id="3_u5g3m"]
+[ext_resource type="Script" uid="uid://c2hwpljsxppgg" path="res://nodes/monster/listen_state.gd" id="4_krfqf"]
+[ext_resource type="Script" uid="uid://dq4ujwwa70s2x" path="res://nodes/monster/wander_state.gd" id="5_ang6r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_coeo4"]
 
@@ -14,6 +16,8 @@ script = ExtResource("1_4mp1r")
 shape = SubResource("CapsuleShape3D_coeo4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1063636245]
+
+[node name="VisionCast" type="RayCast3D" parent="." unique_id=644456334]
 
 [node name="StateMachine" type="Node" parent="." unique_id=436516449 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_abnl3")
@@ -29,14 +33,22 @@ script = ExtResource("2_u5g3m")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
 [node name="ListenState" type="Node" parent="StateMachine" unique_id=603768425]
-script = ExtResource("2_u5g3m")
+script = ExtResource("4_krfqf")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
+[node name="DurationTimer" type="Timer" parent="StateMachine/ListenState" unique_id=1466407473]
+one_shot = true
+
 [node name="WanderState" type="Node" parent="StateMachine" unique_id=675848084]
-script = ExtResource("2_u5g3m")
+unique_name_in_owner = true
+script = ExtResource("5_ang6r")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
 
 [node name="CanFollowNav" parent="StateMachine/WanderState" unique_id=437968238 instance=ExtResource("3_u5g3m")]
+
+[node name="TimeoutTimer" type="Timer" parent="StateMachine/WanderState" unique_id=1529435402]
+wait_time = 8.0
+one_shot = true
 
 [node name="InvestigateState" type="Node" parent="StateMachine" unique_id=1136644849]
 script = ExtResource("2_u5g3m")
@@ -57,3 +69,7 @@ metadata/_custom_type_script = "uid://c5o777xligwqo"
 [node name="SwipeState" type="Node" parent="StateMachine" unique_id=611038649]
 script = ExtResource("2_u5g3m")
 metadata/_custom_type_script = "uid://c5o777xligwqo"
+
+[connection signal="navigation_finished" from="NavigationAgent3D" to="StateMachine/WanderState" method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="timeout" from="StateMachine/ListenState/DurationTimer" to="StateMachine/ListenState" method="_on_duration_timer_timeout"]
+[connection signal="timeout" from="StateMachine/WanderState/TimeoutTimer" to="StateMachine/WanderState" method="_on_timeout_timer_timeout"]
