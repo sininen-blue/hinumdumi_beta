@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b2uqpkvduhwkr" path="res://nodes/post_processing/post_processing.tscn" id="5_bxlbv"]
 [ext_resource type="PackedScene" uid="uid://cyqqf30q650c0" path="res://nodes/main_camera/main_camera.tscn" id="5_woli3"]
 [ext_resource type="PackedScene" uid="uid://c1v75blbalcon" path="res://nodes/monster/monster.tscn" id="6_757c4"]
-[ext_resource type="Script" uid="uid://6386fq3aq4fx" path="res://nodes/main_camera/main_camera.gd" id="6_js3a2"]
 [ext_resource type="PackedScene" uid="uid://d35fcul2g7uf0" path="res://nodes/ui/hud/hud.tscn" id="7_paj5s"]
 [ext_resource type="PackedScene" uid="uid://df0tettky8dgg" path="res://nodes/music/music_manager.tscn" id="8_jeic7"]
 
@@ -25,7 +24,6 @@ script = ExtResource("1_oyjv7")
 [node name="Monster" parent="TutorialLevel" unique_id=904191598 instance=ExtResource("6_757c4")]
 
 [node name="MainCamera" parent="." unique_id=60076617 instance=ExtResource("5_woli3")]
-script = ExtResource("6_js3a2")
 
 [node name="Player" parent="." unique_id=757263129 instance=ExtResource("4_oyjv7")]
 

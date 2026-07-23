@@ -15,7 +15,12 @@ var direction: Vector3
 
 var is_on_ground: bool
 
+var can_hide: bool = false
+var can_jump: bool = false
+var can_uncrouch: bool = false
+
 @onready var head: Head = %Head
+@onready var state_machine: StateMachine = $StateMachine
 @onready var interaction_cast: RayCast3D = $Head/InteractionCast
 @onready var inventory: Inventory = $Inventory
 

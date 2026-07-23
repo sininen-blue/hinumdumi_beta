@@ -10,5 +10,8 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if player and not is_in_cinematic:
+	if player == null:
+		return
+	
+	if "Cinematic" not in player.state_machine.current_state.name:
 		self.transform = player.head.transform
