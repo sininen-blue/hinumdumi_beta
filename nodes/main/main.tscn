@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c1v75blbalcon" path="res://nodes/monster/monster.tscn" id="6_757c4"]
 [ext_resource type="PackedScene" uid="uid://d35fcul2g7uf0" path="res://nodes/ui/hud/hud.tscn" id="7_paj5s"]
 [ext_resource type="PackedScene" uid="uid://df0tettky8dgg" path="res://nodes/music/music_manager.tscn" id="8_jeic7"]
+[ext_resource type="PackedScene" uid="uid://13kd2n4dpwhm" path="res://nodes/ui/debug_hud/debug_hud.tscn" id="9_js3a2"]
 
 [node name="Main" type="Node" unique_id=1783163815]
 script = ExtResource("1_oyjv7")
@@ -31,6 +32,8 @@ script = ExtResource("1_oyjv7")
 visible = false
 
 [node name="Hud" parent="." unique_id=239038622 instance=ExtResource("7_paj5s")]
+
+[node name="DebugHud" parent="." unique_id=303293965 instance=ExtResource("9_js3a2")]
 
 [node name="MusicManager" parent="." unique_id=1213023477 instance=ExtResource("8_jeic7")]
 

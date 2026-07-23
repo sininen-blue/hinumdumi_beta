@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://13kd2n4dpwhm"]
+
+[ext_resource type="Script" uid="uid://di68w0x517xyo" path="res://nodes/ui/debug_hud/debug_hud.gd" id="1_ue17s"]
+
+[node name="DebugHud" type="CanvasLayer" unique_id=303293965]
+script = ExtResource("1_ue17s")
+
+[node name="Main" type="Control" parent="." unique_id=1715004941]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DebugInfoContainer" type="VBoxContainer" parent="Main" unique_id=1873609458]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="PSpeed" type="Label" parent="Main/DebugInfoContainer" unique_id=1517299983]
+layout_mode = 2
+text = "Player Speed"
+
+[node name="PState" type="Label" parent="Main/DebugInfoContainer" unique_id=922834248]
+layout_mode = 2
+text = "Player Current State"
+
+[node name="PStamina" type="Label" parent="Main/DebugInfoContainer" unique_id=877219251]
+layout_mode = 2
+text = "Player Stamina"
+
+[node name="MState" type="Label" parent="Main/DebugInfoContainer" unique_id=251579732]
+layout_mode = 2
+text = "Monster current state"
